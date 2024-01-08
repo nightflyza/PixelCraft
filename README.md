@@ -44,7 +44,7 @@ $pc->saveImage('resizedimage.jpg','jpeg');
 
 ## Installation with [composer](https://getcomposer.org)
 
-The recommended method of installing this library is via [Composer](https://packagist.org/packages/chartmancer/pixelcraft)
+The recommended method of installing this library is via [Composer](https://packagist.org/packages/pixelcraft/pixelcraft)
 
 ### Terminal
 
