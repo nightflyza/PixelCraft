@@ -1,3 +1,5 @@
+![pcraftlogo](https://github.com/nightflyza/PixelCraft/assets/1496954/42c91406-dfc4-47dc-8eea-db3106edb009)
+
 # PixelCraft
 
 PixelCraft is a lightweight PHP library designed for easy image processing using the GD lib. 
