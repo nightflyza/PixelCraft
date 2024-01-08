@@ -1,0 +1,37 @@
+{
+    "name": "pixelcraft/pixelcraft",
+    "description": "lightweight PHP library designed for easy image processing using the GD lib",
+    "type": "library",
+    "license": "MIT",
+
+    "keywords": [
+        "chart",
+        "graph"
+    ],
+    
+    "require": {
+        "php": ">=5.3.28",
+        "ext-gd": "*",
+        "ext-mbstring": "*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "pixelcraft\\": "src"
+        },
+
+       "files": [
+        "src/api.pixelcraft.php"
+       ]
+    },
+
+    "authors": [
+        {
+            "name": "Rostyslav Haitkulov",
+            "email": "info@ubilling.net.ua",
+            "homepage": "https://github.com/nightflyza"
+        }
+    ],
+
+    "minimum-stability": "dev"
+}
