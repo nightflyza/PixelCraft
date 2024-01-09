@@ -682,7 +682,7 @@ class PixelCraft {
     }
 
     /**
-     * Returns color map for current intance image as array(x,y)=>color
+     * Returns color map for current intance image as array(y,x)=>color
      * 
      * @param bool $hex returns map values as rrggbb hex values or raw rgba components
      * 
@@ -694,9 +694,9 @@ class PixelCraft {
             for ($y = 0; $y < $this->imageHeight; $y++) {
                 $rgb = $this->getPixelColor($x, $y);
                 if ($hex) {
-                    $result[$x][$y] = $this->rgbToHex($rgb);
+                    $result[$y][$x] = $this->rgbToHex($rgb);
                 } else {
-                    $result[$x][$y] = $rgb;
+                    $result[$y][$x] = $rgb;
                 }
             }
         }
