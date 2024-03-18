@@ -9,7 +9,7 @@ allowing for quick and efficient image processing in PHP projects.
 
 ## Requirements
 
-- PHP >=5.3 (PHP 7.4, 8.2 also compatible)
+- PHP >=5.3 (PHP 7.4, 8.2, 8.3 also compatible)
 - GD Library
 - Mbstring extension
 

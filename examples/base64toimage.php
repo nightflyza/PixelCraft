@@ -1,0 +1,8 @@
+<?php
+
+require_once 'bootstrap.php';
+
+$encodedPngImage = 'iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqUlEQVRYhe2XwQ6AMAhDV+P//zKeuJBgh5OAi+9qR0a3VAYRkREAwO33YLlxhNQJnExgO2YdRvV9HdBOomdq9axOPweedu6hdby6fRx4u3OL50QfBzz2z4Hss7fYu1DvABOsJiGj3IF/A3QDAOgUtLKu3AHoTMjyYDYvonXKHaA5oNgEY7pZyh2AfRdk/Rv6T0QKm+GifG8qVrxbv99ExATeS2dWzyh34AJPMHI5Ki+zQgAAAABJRU5ErkJggg==';
+
+$pixelCraft->loadBaseImage($encodedPngImage);
+$pixelCraft->renderImage('jpeg');
