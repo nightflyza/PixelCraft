@@ -847,4 +847,19 @@ class PixelCraft {
         }
         return ($result);
     }
+
+    /**
+     * Calculates the brightness of a pixel at the specified coordinates.
+     *
+     * @param int $x The x-coordinate of the pixel.
+     * @param int $y The y-coordinate of the pixel.
+     * 
+     * @return int The brightness value of the pixel.
+     */
+    public function getPixelBrightness($x, $y) {
+        $result = false;
+        $pixelColor = $this->getPixelColor($x, $y);
+        $result = round(($pixelColor['r'] + $pixelColor['g'] + $pixelColor['b']) / 3);
+        return ($result);
+    }
 }
