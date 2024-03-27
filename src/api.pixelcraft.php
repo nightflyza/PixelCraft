@@ -827,6 +827,18 @@ class PixelCraft {
     }
 
     /**
+     * Calculates the brightness value of an RGB color.
+     *
+     * @param array $rgb The RGB color values as an associative array with keys 'r', 'g', and 'b'.
+     * 
+     * @return int The brightness value of the RGB color.
+     */
+    public function rgbToBrightness($rgb) {
+        $result = round(($rgb['r'] + $rgb['g'] + $rgb['b']) / 3);
+        return ($result);
+    }
+
+    /**
      * Returns color map for current intance image as array(y,x)=>color
      * 
      * @param bool $hex returns map values as rrggbb hex values or raw rgba components
@@ -848,6 +860,7 @@ class PixelCraft {
         return ($result);
     }
 
+
     /**
      * Calculates the brightness of a pixel at the specified coordinates.
      *
@@ -859,7 +872,7 @@ class PixelCraft {
     public function getPixelBrightness($x, $y) {
         $result = false;
         $pixelColor = $this->getPixelColor($x, $y);
-        $result = round(($pixelColor['r'] + $pixelColor['g'] + $pixelColor['b']) / 3);
+        $result = $this->rgbToBrightness($pixelColor);
         return ($result);
     }
 }
