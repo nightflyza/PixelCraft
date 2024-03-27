@@ -738,12 +738,42 @@ class PixelCraft {
      * Applies pixelation filter
      * 
      * @param int $blockSize
-     * @param bool $smooth=true
+     * @param bool $smooth
      * 
      * @return void
      */
     public function pixelate($blockSize, $smooth = true) {
         imagefilter($this->image, IMG_FILTER_PIXELATE, $blockSize, $smooth);
+    }
+
+    /**
+     * Applies image filters set to current instance base image
+     *
+     * @param array|int $filterSet must contains array of filters as index=>(IMAGE_FILTER=>argsArray)
+     * 
+     * @return void
+     */
+    public function imageFilters($filterSet = array()) {
+        if (!empty($filterSet)) {
+            foreach ($filterSet as $eachFilterIdx => $eachFilterData) {
+                if (is_array($eachFilterData)) {
+                    foreach ($eachFilterData as $eachFilter => $eachFilterArgs/*  */) {
+                        if (is_array($eachFilterArgs)) {
+                            $filterArgsTmp = array();
+                            $filterArgsTmp[] = $this->image;
+                            $filterArgsTmp[] = $eachFilter;
+                            foreach ($eachFilterArgs as $io => $each) {
+                                $filterArgsTmp[] = $each;
+                            }
+                            //not using just "..." arg unpack operator here due PHP <5.6 compat
+                            call_user_func_array('imagefilter', $filterArgsTmp);
+                        } else {
+                            imagefilter($this->image, $eachFilter, $eachFilterArgs);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
