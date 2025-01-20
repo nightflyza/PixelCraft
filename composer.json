@@ -5,8 +5,18 @@
     "license": "MIT",
 
     "keywords": [
-        "chart",
-        "graph"
+        "GD",
+        "image",
+	"thumbnail",
+	"resize",
+	"watermark",
+	"png",
+	"jpg",
+	"webp",
+	"image conversion",
+	"images",
+	"crop",
+	"filter"
     ],
     
     "require": {
