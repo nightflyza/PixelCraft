@@ -153,6 +153,104 @@ $pixelCraft->renderImage();
 
 ```
 
+
+### Random values visualization
+
+```php
+$pixelCraft = new PixelCraft();
+
+$width=100;
+$height=100;
+$pixelCraft->createImage($width,$height);
+
+for ($x=0;$x<$width;$x++) {
+    for ($y=0;$y<$height;$y++) {
+        $randomR=rand(0,255);
+        $randomG=rand(0,255);
+        $randomB=rand(0,255);
+        $colorName='C_'.$randomR.$randomG.$randomB;
+        $pixelCraft->addColor($colorName,$randomR,$randomG,$randomB);
+        $pixelCraft->drawPixel($x,$y,$colorName);
+    }
+}
+
+$pixelCraft->scale(8);
+$pixelCraft->renderImage();
+```
+
+![drawrandom](https://github.com/user-attachments/assets/3d970496-f286-4c10-be1c-961aeb85d9f5)
+
+### Image region crop
+
+```php
+$pixelCraft = new PixelCraft();
+
+$pixelCraft->loadImage('../assets/fox.jpg');
+
+$pixelCraft->cropRegion(80, 20, 220, 220);
+$pixelCraft->drawString(180,20,$pixelCraft->getImageWidth().'x'.$pixelCraft->getImageHeight(),'black');
+
+//saving original image type
+$originalFileType=$pixelCraft->getImageType();
+
+$pixelCraft->renderImage($originalFileType);
+
+```
+
+![regioncrop](https://github.com/user-attachments/assets/7b30f3c5-8c56-497d-8611-72d7505ccc67)
+
+### Image resize and region crop
+```php
+$pixelCraft = new PixelCraft();
+
+$pixelCraft->loadImage('../assets/fox.jpg');
+
+$pixelCraft->crop(256, 256);
+$pixelCraft->resize(128, 128);
+
+//saving original image type
+$originalFileType=$pixelCraft->getImageType();
+
+$pixelCraft->renderImage($originalFileType);
+```
+
+![resizeandcrop](https://github.com/user-attachments/assets/4b525b75-63e6-4b2e-83dc-6845926f8ff4)
+
+### Converting an image to ASCII-art based on pixel brightness
+
+```php
+$pixelCraft = new PixelCraft();
+
+$charMap = '@#W$9876543210?!abc;:+=-,._       ';
+$len = strlen($charMap);
+
+$result = '';
+$pixelCraft->loadImage('../assets/horse.png');
+
+$filterSet = array();
+$filterSet []= array(IMG_FILTER_NEGATE =>'');
+$pixelCraft->imageFilters($filterSet);
+$pixelCraft->pixelate(3, true);
+$pixelCraft->resize(64, 64);
+
+
+$colorMap = $pixelCraft->getColorMap(false);
+
+foreach ($colorMap as $x => $ys) {
+    foreach ($ys as $y => $color) {
+        $brightness = $pixelCraft->rgbToBrightness($color);
+        $charIndex = floor(($brightness * $len) / 255);
+        $result .= $charMap[$charIndex].' ';
+    }
+    $result .= PHP_EOL;
+}
+
+print($result);
+
+```
+
+![pcimg2ascii](https://github.com/user-attachments/assets/a1a1ef1e-4550-4b72-a7b5-94c38d5d229b)
+
 [Full PixelCraft class documentation](https://ubilling.net.ua/api_doc/classes/PixelCraft.xhtml)
 
 
