@@ -15,7 +15,7 @@ allowing for quick and efficient image processing in PHP projects.
 
 ## Few usage examples
 
-### Minimal example
+### Minimal example / drawing from scratch
 
 ```php
 
@@ -30,6 +30,10 @@ $pc->drawRectangle(0, 0, 640, 240, 'sky');
 $pc->renderImage('png');
 ```
 
+![drawfromscratch](https://github.com/user-attachments/assets/56974d6a-8107-4982-8a45-736f59aac92a)
+
+
+
 ### Image downscale and convertation from PNG to JPEG
 
 ```php
@@ -40,6 +44,9 @@ $pc->scale(0.5);
 
 $pc->saveImage('resizedimage.jpg','jpeg');
 ```
+
+![downscale](https://github.com/user-attachments/assets/dd06f439-a795-43ce-8e1e-544e7533f980)
+
 
 ### Adding watermarks to images
 
@@ -57,6 +64,8 @@ $pixelCraft->drawWatermark(false,$watermarkX,$watermarkY);
 $originalFileType=$pixelCraft->getImageType();
 $pixelCraft->renderImage($originalFileType);
 ```
+
+![watermark](https://github.com/user-attachments/assets/7c66903a-1554-46f3-ac40-2cb908c28284)
 
 ### Instagram-like filters
 
@@ -77,6 +86,9 @@ $pixelCraft->renderImage('jpeg');
 
 ```
 
+![instafilters](https://github.com/user-attachments/assets/6b4c4a21-c2f8-4b2a-ad61-9d164c96bdb9)
+
+
 ### Adding text to image
 
 ```php
@@ -85,10 +97,12 @@ $pixelCraft = new PixelCraft();
 $pixelCraft->loadImage('yourimage.jpg');
 
 $labelPosition = ($pixelCraft->getImageHeight()) - 10;
-$pixelCraft->drawTextAutoSize($labelPosition, 10, 'Text at image bootom', 'white', 'black');
+$pixelCraft->drawTextAutoSize($labelPosition, 10, 'Text at image bottom', 'white', 'black');
 
 $pixelCraft->renderImage('jpeg');
 ```
+
+![textatbottom](https://github.com/user-attachments/assets/2116e0c1-6972-4959-9ae1-7224e9f04b00)
 
 ### Drawing pixel-art
 
@@ -152,6 +166,8 @@ $pixelCraft->scale(16);
 $pixelCraft->renderImage();
 
 ```
+
+![pixelart](https://github.com/user-attachments/assets/df72f378-4eef-4c28-bb81-5c3fcbc53cb9)
 
 
 ### Random values visualization
