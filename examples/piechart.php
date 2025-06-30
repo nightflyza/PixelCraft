@@ -70,7 +70,7 @@ $pixelCraft->setFontSize(16);
 
 $index = 0;
 foreach ($data as $year => $value) {
-    if ($index >= 5) break;
+    if ($index <= 5) {
     
     $y = $legendY + ($index * $legendSpacing);
     
@@ -81,6 +81,7 @@ foreach ($data as $year => $value) {
     $pixelCraft->drawText($legendX + 30, $y + 5, $legendText, 'black');
     
     $index++;
+    }
 }
 
 $pixelCraft->renderImage();
