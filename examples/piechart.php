@@ -62,7 +62,6 @@ foreach ($data as $year => $value) {
     }
     
     $pixelCraft->drawArc($centerX + $offsetX, $centerY + $offsetY, $radius * 2, $radius * 2, $currentAngle, $endAngle, $colorName, IMG_ARC_PIE);
-    
     $currentAngle = $endAngle + $gapAngle;
 }
 
@@ -71,17 +70,13 @@ $pixelCraft->setFontSize(16);
 $index = 0;
 foreach ($data as $year => $value) {
     if ($index <= 5) {
-    
     $y = $legendY + ($index * $legendSpacing);
-    
     $colorName = 'color' . $year;
     $pixelCraft->drawRectangle($legendX, $y - 10, $legendX + 20, $y + 10, $colorName);
-    
     $legendText = $year . ': ' . $value . ' (' . round(($value / $total) * 100, 1) . '%)';
     $pixelCraft->drawText($legendX + 30, $y + 5, $legendText, 'black');
-    
-    $index++;
     }
+    $index++;
 }
 
 $pixelCraft->renderImage();
