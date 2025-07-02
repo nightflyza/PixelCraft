@@ -58,10 +58,10 @@ foreach ($data as $year => $value) {
     $offsetY = sin(deg2rad($segmentCenterAngle)) * 8;
     
     for ($i = 15; $i > 0; $i--) {
-        $pixelCraft->drawArc($centerX + $offsetX, $centerY + $offsetY + $i, $radius * 2, $radius * 2, $currentAngle, $endAngle, $darkColorName, IMG_ARC_PIE);
+        $pixelCraft->drawArcFilled($centerX + $offsetX, $centerY + $offsetY + $i, $radius * 2, $radius * 2, $currentAngle, $endAngle, $darkColorName, IMG_ARC_PIE);
     }
     
-    $pixelCraft->drawArc($centerX + $offsetX, $centerY + $offsetY, $radius * 2, $radius * 2, $currentAngle, $endAngle, $colorName, IMG_ARC_PIE);
+    $pixelCraft->drawArcFilled($centerX + $offsetX, $centerY + $offsetY, $radius * 2, $radius * 2, $currentAngle, $endAngle, $colorName, IMG_ARC_PIE);
     $currentAngle = $endAngle + $gapAngle;
 }
 

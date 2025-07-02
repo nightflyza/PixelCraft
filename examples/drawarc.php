@@ -1,16 +1,11 @@
 <?php
 
 require_once 'bootstrap.php';
-$pixelCraft->createImage(100, 100);
+$pixelCraft->createImage(200, 200);
 
-$pixelCraft->addColor('red', 255, 0, 0);
-$pixelCraft->addColor('darkred', 90, 0, 0);
+$pixelCraft->drawArc(100, 100, 200, 200, 0, 360, 'white');
+$pixelCraft->drawArc(100, 100, 150, 150, 25, 155, 'red');
+$pixelCraft->drawArc(60, 75, 50, 50, 0, 360, 'green');
+$pixelCraft->drawArc(140, 75, 50, 50, 0, 360, 'blue');
 
-for ($i = 60; $i > 50; $i--) {
-    $pixelCraft->drawArc(50, $i, 100, 50, 75, 360, 'darkred', IMG_ARC_PIE);
-}
-
-$pixelCraft->drawArc(50, 50, 100, 50, 75, 360, 'red', IMG_ARC_PIE);
-
-$pixelCraft->scale(2);
 $pixelCraft->renderImage();
