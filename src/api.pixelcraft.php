@@ -494,13 +494,38 @@ class PixelCraft {
      * @return void
      */
     public function resize($width, $height) {
-        if ($this->imageWidth and $this->imageHeight) {
-            $imageResized = imagescale($this->image, $width, $height);
+        if ($this->imageWidth && $this->imageHeight) {
+            if (function_exists('imagescale')) {
+                // PHP 5.5+
+                $imageResized = imagescale($this->image, $width, $height);
+            } else {
+                // PHP < 5.5 fallback
+                $imageResized = imagecreatetruecolor($width, $height);
+
+                imagealphablending($imageResized, false);
+                imagesavealpha($imageResized, true);
+
+                imagecopyresampled(
+                    $imageResized,
+                    $this->image,
+                    0,
+                    0,
+                    0,
+                    0,
+                    $width,
+                    $height,
+                    $this->imageWidth,
+                    $this->imageHeight
+                );
+            }
+
+
             $this->image = $imageResized;
             $this->imageWidth = $width;
             $this->imageHeight = $height;
         }
     }
+
 
     /**
      * Crops image to new dimensions starting from 0x0
@@ -970,7 +995,7 @@ class PixelCraft {
      */
     public function drawPolygon($points, $colorName) {
         if (phpversion() < '8.0.0') {
-            $num_points = count($points)/2;
+            $num_points = count($points) / 2;
             imagepolygon($this->image, $points, $num_points, $this->allocateColor($colorName));
         } else {
             imagepolygon($this->image, $points, $this->allocateColor($colorName));
@@ -987,7 +1012,7 @@ class PixelCraft {
      */
     public function drawPolygonFilled($points, $colorName) {
         if (phpversion() < '8.0.0') {
-            $num_points = count($points)/2;
+            $num_points = count($points) / 2;
             imagefilledpolygon($this->image, $points, $num_points, $this->allocateColor($colorName));
         } else {
             imagefilledpolygon($this->image, $points, $this->allocateColor($colorName));
